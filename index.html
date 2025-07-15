@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>EU TE AMO! ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffcce6, #ffd9ec);
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: #e60073;
+      font-size: 1.6em;
+      margin: 20px 0;
+    }
+
+    p {
+      color: #333;
+      font-size: 1em;
+      line-height: 1.5em;
+      margin: 0 10px;
+    }
+
+    .images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .images img {
+      width: 100%;
+      max-width: 150px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff6699;
+      opacity: 0.7;
+      animation: float 5s linear forwards;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-500px) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    #content, #gallery {
+      display: none;
+    }
+
+    button {
+      background: #ff99cc;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s;
+      margin: 20px 0;
+      max-width: 90%;
+    }
+
+    button:hover {
+      background: #ff66aa;
+    }
+
+    #galleryMessage {
+      margin: 25px 15px 0;
+      font-size: 1em;
+      color: #e60073;
+    }
+
+    /* Pequeno ajuste pra telas muito pequenas */
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.4em;
+      }
+
+      button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+      }
+
+      .images img {
+        max-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="revealButton">clique aqui beh 💖</button>
+
+  <div id="content">
+    <h1>Bem simples, mas espero que goste (web cartinha cringe) ❤️</h1>
+    <p>Como não podemos se ver nessas férias, queria fazer algo especial, mesmo que seja de longe.<br>
+    Então como estou aprendendo mais sobre códigos etc, porque não tentar fazer uma web cartinha?!<br>
+    então se tiver algum bug ou erro, bb, peço perdão, também acho que seria bem melhor, né?<br>
+    Melhor que te enviar um texto de 500 linhas pelo whatts, mas através dessa web cartinha<br>
+    quero escrever o quanto eu te amo e estou com saudades, mesmo a gente se falando todos os dias,<br>
+    não é a mesma coisa, estou com saudades de te sentir, sentir seu cheiro, ver seus lindos olhos, apreciar seu rosto e te beijar,<br>
+    pois você me faz tão bem, mesmo que as vezes brigamos e se estranhamos, eu quero que você saiba o quanto eu te amo.<br>
+    E mesmo você achando que eu não te mereço ou esteja desperdiçando minha adolescencia gostando de você.<br>
+    Acho que seria um desperdicio eu não estar indo atrás ou te deixando (coisa que eu nunca vou fazer).<br>
+    Pois eu te amo e pra mim não podemos deixar alguém ir quando realmente amamos, mesmo que o mundo todo diga ao contrário.<br>
+    Você é como um sonho, a garota mais linda que eu ja vi e eu nunca vou me cansar de esperar até que as coisas fiquem do jeito que a gente quer.<br>
+    Pois meu desejo é que seja você!<br>
+    EU TE AMO PRA SEMPRE! &lt;3</p>
+
+    <p>com amor — Nic Piniqueichons</p>
+
+    <div class="images">
+      <img src="foto1.png" alt="Foto 1">
+      <img src="foto2.png" alt="Foto 2">
+      <img src="foto3.png" alt="Foto 3">
+    </div>
+
+    <button id="galleryButton">Clique aqui para ver nossa galeria beh 💕</button>
+  </div>
+
+  <div id="gallery">
+    <h1>Nossa Galeria ❤️</h1>
+    <div class="images">
+      <img src="foto4.png" alt="Foto 4">
+      <img src="foto5.png" alt="Foto 5">
+      <img src="foto6.png" alt="Foto 6">
+      <img src="foto7.png" alt="Foto 7">
+      <img src="foto8.png" alt="Foto 8">
+      <img src="foto9.png" alt="Foto 9">
+    </div>
+
+    <p id="galleryMessage">bb, me perdoe nao ter mais fotos, eu fiquei com medo de bugar tudo e ter que refazer kkkkk, desculpa</p>
+
+    <button id="backButton">Voltar para a cartinha 💌</button>
+  </div>
+
+  <script>
+    const revealButton = document.getElementById('revealButton');
+    const content = document.getElementById('content');
+    const galleryButton = document.getElementById('galleryButton');
+    const gallery = document.getElementById('gallery');
+    const backButton = document.getElementById('backButton');
+
+    revealButton.addEventListener('click', () => {
+      revealButton.style.display = 'none';
+      content.style.display = 'block';
+      setInterval(createHeart, 800);
+    });
+
+    galleryButton.addEventListener('click', () => {
+      content.style.display = 'none';
+      gallery.style.display = 'block';
+      setInterval(createHeart, 800);
+    });
+
+    backButton.addEventListener('click', () => {
+      gallery.style.display = 'none';
+      content.style.display = 'block';
+    });
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
