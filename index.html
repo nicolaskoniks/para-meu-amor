@@ -40,6 +40,7 @@
       max-width: 150px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      height: auto; /* mantém proporção natural */
     }
 
     .heart {
@@ -48,18 +49,19 @@
       color: #ff6699;
       opacity: 0.7;
       animation: float 5s linear forwards;
+      pointer-events: none;
     }
 
     @keyframes float {
       0% {
-        transform: translateY(0) scale(1);
+        transform: translate3d(0,0,0) scale(1);
         opacity: 0.8;
       }
       50% {
         opacity: 0.5;
       }
       100% {
-        transform: translateY(-500px) scale(0.5);
+        transform: translate3d(0,-500px,0) scale(0.5);
         opacity: 0;
       }
     }
@@ -92,7 +94,7 @@
       color: #e60073;
     }
 
-    /* Pequeno ajuste pra telas muito pequenas */
+    /* Ajuste para telas pequenas */
     @media (max-width: 400px) {
       h1 {
         font-size: 1.4em;
@@ -148,6 +150,8 @@
       <img src="foto7.png" alt="Foto 7">
       <img src="foto8.png" alt="Foto 8">
       <img src="foto9.png" alt="Foto 9">
+      <img src="foto10.png" alt="Foto 10">
+      <img src="foto11.png" alt="Foto 11">
     </div>
 
     <p id="galleryMessage">bb, me perdoe nao ter mais fotos, eu fiquei com medo de bugar tudo e ter que refazer kkkkk, desculpa</p>
@@ -162,16 +166,17 @@
     const gallery = document.getElementById('gallery');
     const backButton = document.getElementById('backButton');
 
+    let heartInterval = null;
+
     revealButton.addEventListener('click', () => {
       revealButton.style.display = 'none';
       content.style.display = 'block';
-      setInterval(createHeart, 800);
+      startHearts();
     });
 
     galleryButton.addEventListener('click', () => {
       content.style.display = 'none';
       gallery.style.display = 'block';
-      setInterval(createHeart, 800);
     });
 
     backButton.addEventListener('click', () => {
@@ -179,11 +184,17 @@
       content.style.display = 'block';
     });
 
+    function startHearts() {
+      if (heartInterval) return;
+      heartInterval = setInterval(createHeart, 800);
+    }
+
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.textContent = '💖';
       heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.fontSize = Math.random() * 15 + 15 + "px";
       document.body.appendChild(heart);
 
       setTimeout(() => {
